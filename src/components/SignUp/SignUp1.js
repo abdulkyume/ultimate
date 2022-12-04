@@ -1,32 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SignUp.css";
 const formdata = (e) => {};
 const SignUp1 = (props) => {
   const { formdata, setformdata, setshowcomponents } = props;
-  if (Object.keys(formdata).length > 0) {
-    if (formdata.firstname !== "" && formdata.lastname !== "") {
-      document.getElementById("phncode").classList.remove("d-none");
-      document.getElementById("inp1").classList.remove("w-100");
-      document.getElementById("inp1").classList.add("w-75");
-      document.getElementById("backbtn").classList.remove("d-none");
-      document.getElementById("fbackbtn").classList.remove("d-none");
-      document.getElementById("loginhere").classList.add("d-none");
-      // document.getElementById("inp1").type="number";
-      document.getElementById("inp1").maxLength = 10;
-      document.getElementById("inp1").placeholder = "1xxxxxxxxx";
-      document.getElementById("inp2").type = "email";
-      document.getElementById("inp2").placeholder = "Write Email Address";
+  useEffect(() => {
+    let userd = localStorage.getItem("user");
+    if (userd) {
+      var user = JSON.parse(userd);
+      document.getElementById("inp1").value = user.firstname;
+      document.getElementById("inp2").value = user.lastname;
     }
-  }
+  });
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
       firstname: e.target[0].value,
       lastname: e.target[1].value,
+      mobile: '',
+      email: '',
     };
     document.getElementById("signupform").reset();
     setformdata(fomvalue);
-    setshowcomponents('2')
+    localStorage.setItem("user",JSON.stringify(fomvalue))
+    setshowcomponents("2");
   };
   return (
     <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
@@ -39,6 +35,7 @@ const SignUp1 = (props) => {
             name="fname"
             placeholder="Write First Name"
             id="inp1"
+            required
           />
           <input
             className="w-100 mb-5 inputcss"
@@ -46,10 +43,11 @@ const SignUp1 = (props) => {
             name="lname"
             placeholder="Write Last Name"
             id="inp2"
+            required
           />
           <div className="mt-4 d-flex justify-content-center">
             <div className="w-50 text-center">
-              <button type="submit" className="cusbtn" >
+              <button type="submit" className="cusbtn">
                 Next Step <i className="bi bi-arrow-right"></i>
               </button>
             </div>

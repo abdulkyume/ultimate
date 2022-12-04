@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SignUp.css";
 const SignUp2 = (props) => {
   const { formdata, setformdata, setshowcomponents } = props;
+  useEffect(() => {
+    let userd = localStorage.getItem("user");
+    if (userd) {
+      var user = JSON.parse(userd);
+      document.getElementById("phone").value = user.mobile;
+      document.getElementById("email").value = user.email;
+    }
+  });
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
@@ -13,6 +21,7 @@ const SignUp2 = (props) => {
       console.log(fomdata);
       document.getElementById("signupform").reset();
       setformdata(fomdata);
+      localStorage.setItem("user", JSON.stringify(fomdata));
       setshowcomponents("3");
     }
   };
@@ -43,25 +52,23 @@ const SignUp2 = (props) => {
             placeholder="Write Email Address"
             id="email"
           />
+          <div className="mt-4 d-flex justify-content-center">
+            <div className="w-25" id="backbtn">
+              <button
+                className="border-0 bg-transparent w-25"
+                onClick={() => setshowcomponents("1")}
+              >
+                Back
+              </button>
+            </div>
+            <div className="w-50 text-center">
+              <button className="cusbtn" type="submit">
+                Next Step <i className="bi bi-arrow-right"></i>
+              </button>
+            </div>
+            <div className="w-25" id="fbackbtn"></div>
+          </div>
         </form>
-        <div className="mt-4 d-flex justify-content-center">
-          <div className="w-25" id="backbtn">
-            <button className="border-0 bg-transparent w-25">Back</button>
-          </div>
-          <div className="w-50 text-center">
-            <button className="cusbtn" onClick={() => setshowcomponents("1")}>
-              Next Step <i className="bi bi-arrow-right"></i>
-            </button>
-          </div>
-          <div className="w-25" id="fbackbtn"></div>
-        </div>
-      </div>
-
-      <div className="text-end p-5 w-75 ms-auto me-auto " id="loginhere">
-        Already have an account?{" "}
-        <a href="" className="text-primary fw-bold">
-          LOGIN HERE!
-        </a>
       </div>
     </div>
   );

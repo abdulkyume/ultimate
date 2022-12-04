@@ -15,7 +15,6 @@ const SignUp3 = (props) => {
     }
   };
   const goback = () => {
-    setshowcomponents("2");
   };
   return (
     <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
