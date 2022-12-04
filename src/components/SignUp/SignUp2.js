@@ -36,6 +36,7 @@ const SignUp2 = (props) => {
             readOnly
             className="w-25 inputcss"
             id="phncode"
+            
           />
           <input
             className="w-75 mb-4 inputcss"
@@ -44,6 +45,7 @@ const SignUp2 = (props) => {
             placeholder="1xxxxxxxx"
             maxLength={10}
             id="phone"
+            required
           />
           <input
             className="w-100 mb-5 inputcss"
@@ -51,6 +53,7 @@ const SignUp2 = (props) => {
             name="email"
             placeholder="Write Email Address"
             id="email"
+            required
           />
           <div className="mt-4 d-flex justify-content-center">
             <div className="w-25" id="backbtn">

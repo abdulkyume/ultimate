@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./SignUp.css";
 const formdata = (e) => {};
 const SignUp1 = (props) => {
@@ -57,10 +58,7 @@ const SignUp1 = (props) => {
       </div>
 
       <div className="text-end p-5 w-75 ms-auto me-auto " id="loginhere">
-        Already have an account?{" "}
-        <a href="" className="text-primary fw-bold">
-          LOGIN HERE!
-        </a>
+        Already have an account?{" "}<Link to="/login"className="text-primary fw-bold">LOGIN HERE!</Link>
       </div>
     </div>
   );

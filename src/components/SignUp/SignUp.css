@@ -17,6 +17,6 @@
 .text-primary {
   color: #1678cb;
 }
-input[type="text"]:focus{
+input:focus{
   outline: none;
 }

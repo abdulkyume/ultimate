@@ -14,8 +14,6 @@ const SignUp3 = (props) => {
       setformdata(fomdata);
     }
   };
-  const goback = () => {
-  };
   return (
     <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
       <div className="text-center h3 mb-4">SignUp Form</div>
@@ -28,6 +26,7 @@ const SignUp3 = (props) => {
             placeholder="Write Password"
             minLength={8}
             id="password"
+            required
           />
         </form>
         <div className="mt-4 d-flex justify-content-center">
@@ -41,7 +40,7 @@ const SignUp3 = (props) => {
           </div>
           <div className="w-50 text-center">
             <button className="cusbtn">
-              Next Step <i className="bi bi-arrow-right"></i>
+              Sign Up
             </button>
           </div>
           <div className="w-25 " id="fbackbtn"></div>
