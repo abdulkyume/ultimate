@@ -1,29 +1,38 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
-const formdata = (e) => {};
+
 const SignUp1 = (props) => {
-  const { formdata, setformdata, setshowcomponents } = props;
+  const { setformdata, setshowcomponents } = props;
   useEffect(() => {
     let userd = localStorage.getItem("user");
     if (userd) {
       var user = JSON.parse(userd);
-      document.getElementById("inp1").value = user.firstname;
-      document.getElementById("inp2").value = user.lastname;
+      document.getElementById("inp1").value = user.first_name;
+      document.getElementById("inp2").value = user.last_name;
     }
   });
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
-      firstname: e.target[0].value,
-      lastname: e.target[1].value,
-      mobile: '',
-      email: '',
+      first_name: e.target[0].value,
+      last_name: e.target[1].value,
     };
+
     document.getElementById("signupform").reset();
     setformdata(fomvalue);
-    localStorage.setItem("user",JSON.stringify(fomvalue))
-    setshowcomponents("2");
+
+    let userd = localStorage.getItem("user");
+    if (userd) {
+      var user = JSON.parse(userd);
+      user.first_name = e.target[0].value;
+      user.last_name = e.target[1].value;
+      localStorage.setItem("user", JSON.stringify(user));
+      setshowcomponents("2");
+    } else {
+      localStorage.setItem("user", JSON.stringify(fomvalue));
+      setshowcomponents("2");
+    }
   };
   return (
     <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
@@ -58,7 +67,10 @@ const SignUp1 = (props) => {
       </div>
 
       <div className="text-end p-5 w-75 ms-auto me-auto " id="loginhere">
-        Already have an account?{" "}<Link to="/login"className="text-primary fw-bold">LOGIN HERE!</Link>
+        Already have an account?{" "}
+        <Link to="/login" className="text-primary fw-bold">
+          LOGIN HERE!
+        </Link>
       </div>
     </div>
   );

@@ -1,24 +1,29 @@
 import React, { useEffect } from "react";
 import "./SignUp.css";
+
 const SignUp2 = (props) => {
   const { formdata, setformdata, setshowcomponents } = props;
   useEffect(() => {
     let userd = localStorage.getItem("user");
     if (userd) {
       var user = JSON.parse(userd);
-      document.getElementById("phone").value = user.mobile;
-      document.getElementById("email").value = user.email;
+      if (user.phone_number === undefined || user.email === undefined) {
+        document.getElementById("phone").value = '';
+        document.getElementById("email").value = '';
+      } else {
+        document.getElementById("phone").value = user.phone_number;
+        document.getElementById("email").value = user.email;
+      }
     }
   });
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
-      mobile: e.target[1].value,
+      phone_number: e.target[1].value,
       email: e.target[2].value,
     };
-    if (formdata.firstname !== "" && formdata.lastname !== "") {
+    if (formdata.first_name !== "" && formdata.last_name !== "") {
       var fomdata = { ...formdata, ...fomvalue };
-      console.log(fomdata);
       document.getElementById("signupform").reset();
       setformdata(fomdata);
       localStorage.setItem("user", JSON.stringify(fomdata));
@@ -36,7 +41,6 @@ const SignUp2 = (props) => {
             readOnly
             className="w-25 inputcss"
             id="phncode"
-            
           />
           <input
             className="w-75 mb-4 inputcss"
