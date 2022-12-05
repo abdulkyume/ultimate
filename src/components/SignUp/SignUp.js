@@ -26,8 +26,6 @@ const SignUp = (props) => {
               formdata={formdata}
               setformdata={setformdata}
               setshowcomponents={setshowcomponents}
-              setshowcomponent={setshowcomponent}
-              setshowfull={setshowfull}
             />
           )}
         </div>

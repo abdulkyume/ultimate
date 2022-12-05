@@ -22,32 +22,14 @@ const Main = (props) => {
           </div>
         </div>
         <div className="col-lg-5 p-4">
-          <Router>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <SignUp
-                    formdata={formdata}
-                    setformdata={setformdata}
-                    setshowcomponents={setshowcomponents}
-                    showcomponents={showcomponents}
-                    setshowfull={setshowfull}
-                    setshowcomponent={setshowcomponent}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/login"
-                element={
-                  <LogIn
-                  setshowcomponent={setshowcomponent}
-                  setshowfull={setshowfull}
-                  />
-                }
-              ></Route>
-            </Routes>
-          </Router>
+          <SignUp
+            formdata={formdata}
+            setformdata={setformdata}
+            setshowcomponents={setshowcomponents}
+            showcomponents={showcomponents}
+            setshowfull={setshowfull}
+            setshowcomponent={setshowcomponent}
+          />
         </div>
       </div>
     </div>

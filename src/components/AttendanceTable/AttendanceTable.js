@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../images/logo.png";
+import { useNavigate  } from "react-router-dom";
 import axios from "axios";
 import "./AttendanceTable.css";
 
 const AttendanceTable = () => {
+  const navigate = useNavigate();
   const [attendancetabledata, setattendancetabledata] = useState();
   useEffect(() => {
-    var accesstokenf = JSON.parse(localStorage.getItem("user"));
+    var accesstokenf = JSON.parse(localStorage.getItem("usert"));
     var accesstoken = accesstokenf.access_token;
-    axios
+    if(Object.keys(accesstokenf).length>0){
+      axios
       .get("https://test.nexisltd.com/test", {
         headers: {
           Authorization: `Bearer ${accesstoken}`,
@@ -46,6 +49,10 @@ const AttendanceTable = () => {
         setattendancetabledata(tabledatas);
       })
       .catch((err) => {});
+    }
+    else{
+      navigate("/")
+    }
   });
   return (
     <div>
@@ -72,7 +79,7 @@ const AttendanceTable = () => {
               </thead>
               <></>
               <tbody>
-                {attendancetabledata.map((element) => <tr key={element.name}> <td>{element.date}</td><td>{element.name}</td><td>{element.status}</td> </tr>)}
+                {attendancetabledata && attendancetabledata.map((element) => <tr key={element.name}> <td>{element.date}</td><td>{element.name}</td><td>{element.status}</td> </tr>)}
               </tbody>
             </table>
           </div>

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const SignUp1 = (props) => {
-  const { setformdata, setshowcomponents } = props;
+  const { formdata,setformdata, setshowcomponents } = props;
   useEffect(() => {
     let userd = localStorage.getItem("user");
+    console.log(userd);
     if (userd) {
       var user = JSON.parse(userd);
       document.getElementById("inp1").value = user.first_name;

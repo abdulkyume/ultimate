@@ -3,32 +3,32 @@ import "./SignUp.css";
 
 const SignUp2 = (props) => {
   const { formdata, setformdata, setshowcomponents } = props;
+
   useEffect(() => {
     let userd = localStorage.getItem("user");
     if (userd) {
       var user = JSON.parse(userd);
       if (user.phone_number === undefined || user.email === undefined) {
-        document.getElementById("phone").value = '';
-        document.getElementById("email").value = '';
+        document.getElementById("phone").value = "";
+        document.getElementById("email").value = "";
       } else {
         document.getElementById("phone").value = user.phone_number;
         document.getElementById("email").value = user.email;
       }
     }
   });
+  
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
       phone_number: e.target[1].value,
       email: e.target[2].value,
     };
-    if (formdata.first_name !== "" && formdata.last_name !== "") {
-      var fomdata = { ...formdata, ...fomvalue };
-      document.getElementById("signupform").reset();
-      setformdata(fomdata);
-      localStorage.setItem("user", JSON.stringify(fomdata));
-      setshowcomponents("3");
-    }
+    var fomdata = { ...formdata, ...fomvalue };
+    document.getElementById("signupform").reset();
+    setformdata(fomdata);
+    localStorage.setItem("user", JSON.stringify(fomdata));
+    setshowcomponents("3");
   };
   return (
     <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
