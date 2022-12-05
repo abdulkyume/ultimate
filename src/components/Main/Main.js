@@ -16,12 +16,13 @@ const Main = (props) => {
   return (
     <div className="container-fluid">
       <div className="row vh-100">
-        <div className="col-lg-7 p-5 bg-img">
+        <div className="col-lg-7 p-5 bg-img d-none d-lg-block d-md-none">
           <div className="logo">
             <img src={logo} alt="logo" />
           </div>
         </div>
         <div className="col-lg-5 p-4">
+        <img src={logo} alt="logo" />
           <SignUp
             formdata={formdata}
             setformdata={setformdata}

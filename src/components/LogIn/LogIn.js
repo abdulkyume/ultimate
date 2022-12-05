@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import { Link,useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 import "./Login.css";
@@ -20,7 +20,6 @@ const customStyles = {
 Modal.setAppElement("#root");
 const LogIn = (props) => {
   const navigate = useNavigate();
-  const { setshowfull, setshowcomponent } = props;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [subtitle, setsubtitle] = useState("");
   function openModal() {
@@ -43,9 +42,9 @@ const LogIn = (props) => {
           var alldata = { ...fomvalue, ...res.data };
           console.log(alldata);
           localStorage.setItem("usert", JSON.stringify(alldata));
-          localStorage.removeItem("user")
+          localStorage.removeItem("user");
           document.getElementById("signupform").reset();
-          navigate("/AttendanceTable")
+          navigate("/AttendanceTable");
         }
       })
       .catch((err) => {
@@ -56,16 +55,25 @@ const LogIn = (props) => {
 
   return (
     <div className="container-fluid">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        Email/Phone Already Exist
+      </Modal>
       <div className="row vh-100">
-        <div className="col-lg-7 p-5 bg-img">
+        <div className="col-lg-7 d-md-none d-lg-block d-none p-lg-5 bg-img">
           <div className="logo">
             <img src={logo} alt="logo" />
           </div>
         </div>
-        <div className="col-lg-5 p-4">
-          <div className="w-100 d-flex flex-column justify-content-center align-content-center h-100 bshadow">
-            <div className="text-center h3 mb-4">LogIn Form</div>
-            <div className="p-5 w-75 ms-auto me-auto mt-5">
+        <div className="col-lg-5 col-md-12 p-lg-4 col-12 col-md-12">
+          <img src={logo} alt="logo" className="d-lg-none d-md-block d-block"/>
+          <div className="h-100 w-100 d-flex flex-column justify-content-center align-content-center bshadow">
+            <div className="text-center h3 mb-sm-3 mt-5">LogIn Form</div>
+            <div className="p-lg-5 p-md-3 p-3 w-lg-75 ms-auto me-auto mt-5 mt-lg-5">
               <form onSubmit={getformdata} id="signupform">
                 <input
                   className="w-100 mb-4 inputcss"

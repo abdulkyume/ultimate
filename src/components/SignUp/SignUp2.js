@@ -6,6 +6,7 @@ const SignUp2 = (props) => {
 
   useEffect(() => {
     let userd = localStorage.getItem("user");
+    console.log(userd);
     if (userd) {
       var user = JSON.parse(userd);
       if (user.phone_number === undefined || user.email === undefined) {
@@ -17,13 +18,14 @@ const SignUp2 = (props) => {
       }
     }
   });
-  
+
   const getformdata = (e) => {
     e.preventDefault();
     var fomvalue = {
       phone_number: e.target[1].value,
       email: e.target[2].value,
     };
+    
     var fomdata = { ...formdata, ...fomvalue };
     document.getElementById("signupform").reset();
     setformdata(fomdata);

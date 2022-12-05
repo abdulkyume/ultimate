@@ -66,7 +66,7 @@ const AttendanceTable = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-12">
-            <div className="cutomheads">Attendacne Information</div>
+            <div className="cutomheads w-lg-50">Attendacne Information</div>
           </div>
           <div className="col-lg-12 col-md-12 col-12">
             <table className="table">

@@ -18,12 +18,11 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const SignUp3 = (props) => {
+  const navigate = useNavigate();
   const {
     formdata,
     setformdata,
-    setshowcomponent,
     setshowcomponents,
-    setshowfull,
   } = props;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [subtitle, setsubtitle] = useState("");
@@ -51,8 +50,7 @@ const SignUp3 = (props) => {
             localStorage.removeItem("user");
             localStorage.clear();
             document.getElementById("signupform").reset();
-            setshowcomponent(false);
-            setshowfull(true);
+            navigate("/")
           }
         })
         .catch((err) => {

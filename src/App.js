@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AttendanceTable from "./components/AttendanceTable/AttendanceTable";
 import Main from "./components/Main/Main";
 import LogIn from "./components/LogIn/LogIn";
-import SignUp from "./components/SignUp/SignUp";
 function App() {
   const [formdata, setformdata] = useState({
     first_name: "",
@@ -14,21 +13,11 @@ function App() {
     password: "",
   });
   const [showcomponents, setshowcomponents] = useState("1");
-  const [showcomponent, setshowcomponent] = useState(true);
-  const [showfull, setshowfull] = useState(false);
   return (
     <>
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <LogIn
-                setshowcomponent={setshowcomponent}
-                setshowfull={setshowfull}
-              />
-            }
-          ></Route>
+          <Route path="/" element={<LogIn />}></Route>
           <Route path="/AttendanceTable" element={<AttendanceTable />}></Route>
           <Route
             path="/signup"
@@ -36,7 +25,7 @@ function App() {
               <Main
                 showcomponents={showcomponents}
                 setshowcomponents={setshowcomponents}
-                setformdata ={setformdata}
+                setformdata={setformdata}
                 formdata={formdata}
               />
             }
